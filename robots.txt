@@ -10,5 +10,5 @@ Disallow: /admin/
 Disallow: /test.html
 
 # Sitemap location (will be updated when we create the sitemap)
-Sitemap: https://yourusername.github.io/gamediawebsite/sitemap.xml
+Sitemap: https://spicycabbage.github.io/gamediawebsite/sitemap.xml
 

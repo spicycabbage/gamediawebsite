@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://yourusername.github.io/gamediawebsite/</loc>
+    <loc>https://spicycabbage.github.io/gamediawebsite/</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -10,14 +10,14 @@
 
   <!-- Game Genres -->
   <url>
-    <loc>https://yourusername.github.io/gamediawebsite/genre-spot-difference.html</loc>
+    <loc>https://spicycabbage.github.io/gamediawebsite/genre-spot-difference.html</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yourusername.github.io/gamediawebsite/genre-tower-defense.html</loc>
+    <loc>https://spicycabbage.github.io/gamediawebsite/genre-tower-defense.html</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -25,17 +25,18 @@
 
   <!-- Individual Games -->
   <url>
-    <loc>https://yourusername.github.io/gamediawebsite/game-urban-explorer.html</loc>
+    <loc>https://spicycabbage.github.io/gamediawebsite/game-urban-explorer.html</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yourusername.github.io/gamediawebsite/game-castle-siege.html</loc>
+    <loc>https://spicycabbage.github.io/gamediawebsite/game-castle-siege.html</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 </urlset>
+
 
