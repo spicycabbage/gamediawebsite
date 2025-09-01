@@ -138,6 +138,11 @@
                         <span class="game-count">0 Games</span>
                     </a>
                 </div>
+                <div class="hero-actions">
+                    <button class="btn-outline" onclick="showImportModal()" style="margin-top: 1rem;">
+                        <i class="fas fa-download"></i> Sync Latest Games
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -149,6 +154,26 @@
             </div>
         </section>
     </main>
+
+    <!-- Import Data Modal -->
+    <div id="import-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-download"></i> Sync Latest Game Data</h2>
+                <span class="close" onclick="closeImportModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Get the latest games and updates from the admin. Upload the data file exported from the admin dashboard.</p>
+                <input type="file" id="homepage-import-file" accept=".json" style="margin: 1rem 0;">
+                <div class="modal-actions">
+                    <button onclick="importGameData()" class="btn btn-primary">
+                        <i class="fas fa-upload"></i> Import Data
+                    </button>
+                    <button onclick="closeImportModal()" class="btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="site-footer">

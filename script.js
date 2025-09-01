@@ -113,30 +113,6 @@ function loadGamesFromStorage() {
             status: 'published'
         },
         {
-            id: 'nature-secrets',
-            title: 'Nature\'s Secrets',
-            genre: 'spot-difference',
-            description: 'Discover hidden differences in breathtaking natural landscapes and wildlife scenes.',
-            rating: 4.9,
-            downloads: '25K+',
-            image: 'https://via.placeholder.com/300x200/764ba2/white?text=Nature+Secrets',
-            price: 'paid',
-            priceAmount: '$2.99',
-            status: 'published'
-        },
-        {
-            id: 'fantasy-worlds',
-            title: 'Fantasy Worlds',
-            genre: 'spot-difference',
-            description: 'Journey through magical fantasy realms and spot the differences in enchanted scenes.',
-            rating: 4.7,
-            downloads: '75K+',
-            image: 'https://via.placeholder.com/300x200/667eea/white?text=Fantasy+Worlds',
-            price: 'free',
-            priceAmount: '',
-            status: 'published'
-        },
-        {
             id: 'castle-siege',
             title: 'Castle Siege',
             genre: 'tower-defense',
@@ -146,18 +122,6 @@ function loadGamesFromStorage() {
             image: 'https://via.placeholder.com/300x200/ff6b6b/white?text=Castle+Siege',
             price: 'free',
             priceAmount: '',
-            status: 'published'
-        },
-        {
-            id: 'space-defense',
-            title: 'Space Defense',
-            genre: 'tower-defense',
-            description: 'Protect your space station from alien invaders in this futuristic tower defense epic.',
-            rating: 4.8,
-            downloads: '45K+',
-            image: 'https://via.placeholder.com/300x200/4ecdc4/white?text=Space+Defense',
-            price: 'paid',
-            priceAmount: '$3.99',
             status: 'published'
         }
     ];
@@ -348,6 +312,69 @@ window.addEventListener('load', function() {
     }, 100);
 });
 
+// Import Modal Functions
+function showImportModal() {
+    const modal = document.getElementById('import-modal');
+    if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeImportModal() {
+    const modal = document.getElementById('import-modal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    // Clear file input
+    const fileInput = document.getElementById('homepage-import-file');
+    if (fileInput) {
+        fileInput.value = '';
+    }
+}
+
+function importGameData() {
+    const fileInput = document.getElementById('homepage-import-file');
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert('Please select a file to import');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+
+            if (data.games) {
+                localStorage.setItem('games', JSON.stringify(data.games));
+            }
+            if (data.genres) {
+                localStorage.setItem('genres', JSON.stringify(data.genres));
+            }
+
+            // Reload the page to show new data
+            alert('Data imported successfully! Refreshing page...');
+            window.location.reload();
+
+        } catch (error) {
+            console.error('Import error:', error);
+            alert('Error importing data. Please check the file format.');
+        }
+    };
+    reader.readAsText(file);
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('import-modal');
+    if (e.target === modal) {
+        closeImportModal();
+    }
+});
+
 // Export functions for global use
 window.GameShowcase = {
     loadGamesFromStorage,
@@ -355,5 +382,8 @@ window.GameShowcase = {
     displayFeaturedGames,
     updateGenreCounts,
     filterGames,
-    searchGames
+    searchGames,
+    showImportModal,
+    closeImportModal,
+    importGameData
 };
