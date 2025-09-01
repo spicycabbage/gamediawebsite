@@ -693,3 +693,146 @@ document.addEventListener('keydown', function(e) {
         closeModal();
     }
 });
+
+// Data Export/Import Functions
+function exportData() {
+    const data = {
+        games: JSON.parse(localStorage.getItem('games')) || [],
+        genres: JSON.parse(localStorage.getItem('genres')) || [],
+        activities: JSON.parse(localStorage.getItem('activities')) || [],
+        exportDate: new Date().toISOString()
+    };
+
+    const dataStr = JSON.stringify(data, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+
+    const exportFileDefaultName = `game-showcase-data-${new Date().toISOString().split('T')[0]}.json`;
+
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+
+    addActivity('Data exported', 'success');
+    showNotification('Data exported successfully!', 'success');
+}
+
+function importData() {
+    const fileInput = document.getElementById('import-file');
+    const file = fileInput.files[0];
+
+    if (!file) {
+        showNotification('Please select a file to import', 'error');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+
+            if (data.games) {
+                localStorage.setItem('games', JSON.stringify(data.games));
+            }
+            if (data.genres) {
+                localStorage.setItem('genres', JSON.stringify(data.genres));
+            }
+            if (data.activities) {
+                localStorage.setItem('activities', JSON.stringify(data.activities));
+            }
+
+            // Reload data and refresh UI
+            games = data.games || [];
+            genres = data.genres || [];
+            activities = data.activities || [];
+
+            loadDashboard();
+            loadGames();
+            loadGenres();
+
+            addActivity('Data imported', 'success');
+            showNotification('Data imported successfully!', 'success');
+
+            // Clear file input
+            fileInput.value = '';
+
+        } catch (error) {
+            console.error('Import error:', error);
+            showNotification('Error importing data. Please check the file format.', 'error');
+        }
+    };
+    reader.readAsText(file);
+}
+
+function clearAllData() {
+    if (confirm('Are you sure you want to clear ALL data? This cannot be undone!')) {
+        localStorage.removeItem('games');
+        localStorage.removeItem('genres');
+        localStorage.removeItem('activities');
+
+        // Reset to defaults
+        games = getDefaultGames();
+        genres = getDefaultGenres();
+        activities = [];
+
+        // Save defaults
+        localStorage.setItem('games', JSON.stringify(games));
+        localStorage.setItem('genres', JSON.stringify(genres));
+        localStorage.setItem('activities', JSON.stringify(activities));
+
+        // Refresh UI
+        loadDashboard();
+        loadGames();
+        loadGenres();
+
+        addActivity('All data cleared', 'warning');
+        showNotification('All data cleared and reset to defaults', 'warning');
+    }
+}
+
+function showDataExport() {
+    // Show the data export section
+    document.querySelectorAll('.admin-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    document.getElementById('data-export').classList.add('active');
+
+    // Update sidebar active state
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    document.querySelector('[data-section="data-export"]').classList.add('active');
+
+    // Update data counts
+    updateDataCounts();
+}
+
+function updateDataCounts() {
+    const games = JSON.parse(localStorage.getItem('games')) || [];
+    const genres = JSON.parse(localStorage.getItem('genres')) || [];
+    const activities = JSON.parse(localStorage.getItem('activities')) || [];
+
+    document.getElementById('export-games-count').textContent = games.length;
+    document.getElementById('export-genres-count').textContent = genres.length;
+    document.getElementById('export-activities-count').textContent = activities.length;
+}
+
+// Add click handler for data export link in existing DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    // ... existing code is already there ...
+
+    // Add click handler for data export link
+    const dataExportLink = document.querySelector('[data-section="data-export"]');
+    if (dataExportLink) {
+        dataExportLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showDataExport();
+        });
+    }
+});
+
+// Initialize on page load
+window.addEventListener('load', function() {
+    // Additional initialization if needed
+    updateDataCounts();
+});

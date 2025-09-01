@@ -46,6 +46,10 @@
                 <i class="fas fa-cog"></i>
                 <span>Settings</span>
             </a>
+            <a href="#data-export" class="sidebar-link" data-section="data-export">
+                <i class="fas fa-download"></i>
+                <span>Data Export/Import</span>
+            </a>
         </nav>
     </aside>
 
@@ -192,6 +196,45 @@
                     </button>
                     <button class="btn-secondary" onclick="resetSettings()">
                         <i class="fas fa-undo"></i> Reset to Default
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Export/Import Section -->
+        <section id="data-export" class="admin-section">
+            <div class="section-header">
+                <h1><i class="fas fa-download"></i> Data Export/Import</h1>
+                <p>Export your game data to share or backup, or import data from a file</p>
+            </div>
+
+            <div class="data-export-container">
+                <div class="export-section">
+                    <h3>Export Data</h3>
+                    <p>Download your current games, genres, and settings as a JSON file</p>
+                    <button onclick="exportData()" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Export All Data
+                    </button>
+                </div>
+
+                <div class="import-section">
+                    <h3>Import Data</h3>
+                    <p>Upload a JSON file to restore games, genres, and settings</p>
+                    <input type="file" id="import-file" accept=".json" style="margin-bottom: 10px;">
+                    <button onclick="importData()" class="btn btn-secondary">
+                        <i class="fas fa-upload"></i> Import Data
+                    </button>
+                </div>
+
+                <div class="data-preview">
+                    <h3>Current Data Summary</h3>
+                    <div class="data-stats">
+                        <p><strong>Games:</strong> <span id="export-games-count">0</span></p>
+                        <p><strong>Genres:</strong> <span id="export-genres-count">0</span></p>
+                        <p><strong>Activities:</strong> <span id="export-activities-count">0</span></p>
+                    </div>
+                    <button onclick="clearAllData()" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Clear All Data
                     </button>
                 </div>
             </div>

@@ -658,3 +658,56 @@
     }
 }
 
+/* Data Export/Import Styles */
+.data-export-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.export-section, .import-section, .data-preview {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.export-section h3, .import-section h3, .data-preview h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.export-section p, .import-section p {
+    margin-bottom: 1rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.data-stats {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.data-stats p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.data-stats strong {
+    color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .data-export-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
