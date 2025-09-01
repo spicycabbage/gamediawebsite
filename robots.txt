@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Allow all crawlers to access all content
+# This is a basic setup for a public website
+
+# Block admin areas from search engines (optional security)
+Disallow: /admin.html
+Disallow: /admin/
+Disallow: /test.html
+
+# Sitemap location (will be updated when we create the sitemap)
+Sitemap: https://yourusername.github.io/SpotDiff-Website/sitemap.xml

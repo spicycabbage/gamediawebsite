@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Game Showcase</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Admin Navigation -->
+    <header class="admin-header">
+        <div class="admin-nav-container">
+            <div class="admin-brand">
+                <i class="fas fa-cog"></i>
+                <span>Admin Dashboard</span>
+            </div>
+            <nav class="admin-nav">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i> View Site
+                </a>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar">
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="sidebar-link active" data-section="dashboard">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#games" class="sidebar-link" data-section="games">
+                <i class="fas fa-gamepad"></i>
+                <span>Games</span>
+            </a>
+            <a href="#genres" class="sidebar-link" data-section="genres">
+                <i class="fas fa-tags"></i>
+                <span>Genres</span>
+            </a>
+            <a href="#settings" class="sidebar-link" data-section="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Admin Content -->
+    <main class="admin-main">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="admin-section active">
+            <div class="section-header">
+                <h1><i class="fas fa-tachometer-alt"></i> Dashboard</h1>
+                <p>Overview of your game showcase</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-games">0</h3>
+                        <p>Total Games</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-genres">0</h3>
+                        <p>Genres</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-downloads">0</h3>
+                        <p>Total Downloads</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="avg-rating">0.0</h3>
+                        <p>Average Rating</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-activity">
+                <h2>Recent Activity</h2>
+                <div class="activity-list" id="recent-activity">
+                    <!-- Activity items will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Games Management Section -->
+        <section id="games" class="admin-section">
+            <div class="section-header">
+                <h1><i class="fas fa-gamepad"></i> Games Management</h1>
+                <button class="btn-primary" onclick="showAddGameModal()">
+                    <i class="fas fa-plus"></i> Add New Game
+                </button>
+            </div>
+
+            <div class="games-table-container">
+                <table class="games-table">
+                    <thead>
+                        <tr>
+                            <th>Game</th>
+                            <th>Genre</th>
+                            <th>Rating</th>
+                            <th>Downloads</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="games-table-body">
+                        <!-- Games will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Genres Management Section -->
+        <section id="genres" class="admin-section">
+            <div class="section-header">
+                <h1><i class="fas fa-tags"></i> Genres Management</h1>
+                <button class="btn-primary" onclick="showAddGenreModal()">
+                    <i class="fas fa-plus"></i> Add New Genre
+                </button>
+            </div>
+
+            <div class="genres-grid" id="genres-grid">
+                <!-- Genres will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="admin-section">
+            <div class="section-header">
+                <h1><i class="fas fa-cog"></i> Site Settings</h1>
+                <p>Configure your game showcase website</p>
+            </div>
+
+            <div class="settings-container">
+                <div class="settings-section">
+                    <h2>General Settings</h2>
+                    <div class="form-group">
+                        <label for="site-title">Site Title</label>
+                        <input type="text" id="site-title" value="Mobile Game Showcase">
+                    </div>
+                    <div class="form-group">
+                        <label for="site-description">Site Description</label>
+                        <textarea id="site-description" rows="3">Discover and play amazing mobile games across different genres</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-password">Admin Password</label>
+                        <input type="password" id="admin-password" placeholder="Set admin password">
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h2>Appearance</h2>
+                    <div class="form-group">
+                        <label for="primary-color">Primary Color</label>
+                        <input type="color" id="primary-color" value="#667eea">
+                    </div>
+                    <div class="form-group">
+                        <label for="secondary-color">Secondary Color</label>
+                        <input type="color" id="secondary-color" value="#764ba2">
+                    </div>
+                </div>
+
+                <div class="settings-actions">
+                    <button class="btn-primary" onclick="saveSettings()">
+                        <i class="fas fa-save"></i> Save Settings
+                    </button>
+                    <button class="btn-secondary" onclick="resetSettings()">
+                        <i class="fas fa-undo"></i> Reset to Default
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Game Modal -->
+    <div id="add-game-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-plus"></i> Add New Game</h2>
+                <span class="modal-close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-game-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="game-title">Game Title *</label>
+                            <input type="text" id="game-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="game-genre">Genre *</label>
+                            <select id="game-genre" required>
+                                <option value="">Select Genre</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="game-description">Description *</label>
+                        <textarea id="game-description" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="game-rating">Rating</label>
+                            <input type="number" id="game-rating" min="0" max="5" step="0.1" value="4.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="game-downloads">Downloads</label>
+                            <input type="text" id="game-downloads" placeholder="e.g., 50K+">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="game-image">Image URL</label>
+                            <input type="url" id="game-image" placeholder="https://example.com/image.jpg">
+                            <small style="color: #666; display: block; margin-top: 5px;">Or upload an image file below</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="game-price">Price</label>
+                            <select id="game-price">
+                                <option value="free">Free</option>
+                                <option value="paid">Paid</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="game-image-upload">Upload Image</label>
+                        <input type="file" id="game-image-upload" accept="image/*" onchange="previewImage(this)">
+                        <div id="image-preview" style="margin-top: 10px; display: none;">
+                            <img id="preview-img" src="" alt="Preview" style="max-width: 200px; max-height: 150px; border-radius: 5px; border: 1px solid #ddd;">
+                            <button type="button" onclick="removeImage()" style="margin-left: 10px; padding: 5px 10px; background: #e74c3c; color: white; border: none; border-radius: 3px; cursor: pointer;">Remove</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="game-price-amount">Price Amount (if paid)</label>
+                        <input type="text" id="game-price-amount" placeholder="e.g., $2.99">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn-primary" onclick="saveGame()">Save Game</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Genre Modal -->
+    <div id="add-genre-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-plus"></i> Add New Genre</h2>
+                <span class="modal-close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-genre-form">
+                    <div class="form-group">
+                        <label for="genre-name">Genre Name *</label>
+                        <input type="text" id="genre-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="genre-description">Description *</label>
+                        <textarea id="genre-description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="genre-icon">Icon (FontAwesome class)</label>
+                        <input type="text" id="genre-icon" placeholder="fas fa-gamepad">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn-primary" onclick="saveGenre()">Save Genre</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Game Modal -->
+    <div id="edit-game-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-edit"></i> Edit Game</h2>
+                <span class="modal-close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="edit-game-form">
+                    <input type="hidden" id="edit-game-id">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-game-title">Game Title *</label>
+                            <input type="text" id="edit-game-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-game-genre">Genre *</label>
+                            <select id="edit-game-genre" required>
+                                <option value="">Select Genre</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-game-description">Description *</label>
+                        <textarea id="edit-game-description" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-game-rating">Rating</label>
+                            <input type="number" id="edit-game-rating" min="0" max="5" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-game-downloads">Downloads</label>
+                            <input type="text" id="edit-game-downloads">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-game-image">Image URL</label>
+                            <input type="url" id="edit-game-image">
+                            <small style="color: #666; display: block; margin-top: 5px;">Or upload an image file below</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-game-price">Price</label>
+                            <select id="edit-game-price">
+                                <option value="free">Free</option>
+                                <option value="paid">Paid</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-game-image-upload">Upload Image</label>
+                        <input type="file" id="edit-game-image-upload" accept="image/*" onchange="previewEditImage(this)">
+                        <div id="edit-image-preview" style="margin-top: 10px; display: none;">
+                            <img id="edit-preview-img" src="" alt="Preview" style="max-width: 200px; max-height: 150px; border-radius: 5px; border: 1px solid #ddd;">
+                            <button type="button" onclick="removeEditImage()" style="margin-left: 10px; padding: 5px 10px; background: #e74c3c; color: white; border: none; border-radius: 3px; cursor: pointer;">Remove</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-game-price-amount">Price Amount (if paid)</label>
+                        <input type="text" id="edit-game-price-amount">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn-primary" onclick="updateGame()">Update Game</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="admin.js"></script>
+</body>
+</html>

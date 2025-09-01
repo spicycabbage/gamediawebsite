@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Game Showcase - Spot The Difference & Tower Defense Games</title>
+    <meta name="description" content="Discover amazing mobile games including spot the difference puzzles and tower defense strategy games. Play free games and explore our growing collection of mobile entertainment.">
+    <meta name="keywords" content="mobile games, spot the difference, tower defense, puzzle games, strategy games, free mobile games, iOS games, Android games">
+    <meta name="author" content="Mobile Game Showcase">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mobile Game Showcase - Spot The Difference & Tower Defense Games">
+    <meta property="og:description" content="Discover amazing mobile games including spot the difference puzzles and tower defense strategy games. Play free games and explore our growing collection of mobile entertainment.">
+    <meta property="og:url" content="https://yourusername.github.io/SpotDiff-Website/">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/667eea/white?text=Mobile+Game+Showcase">
+    <meta property="og:site_name" content="Mobile Game Showcase">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mobile Game Showcase - Spot The Difference & Tower Defense Games">
+    <meta name="twitter:description" content="Discover amazing mobile games including spot the difference puzzles and tower defense strategy games. Play free games and explore our growing collection of mobile entertainment.">
+    <meta name="twitter:image" content="https://via.placeholder.com/1200x630/667eea/white?text=Mobile+Game+Showcase">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://yourusername.github.io/SpotDiff-Website/#website",
+          "url": "https://yourusername.github.io/SpotDiff-Website/",
+          "name": "Mobile Game Showcase",
+          "description": "Discover amazing mobile games including spot the difference puzzles and tower defense strategy games",
+          "publisher": {
+            "@id": "https://yourusername.github.io/SpotDiff-Website/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://yourusername.github.io/SpotDiff-Website/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://yourusername.github.io/SpotDiff-Website/#organization",
+          "name": "Mobile Game Showcase",
+          "url": "https://yourusername.github.io/SpotDiff-Website/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://via.placeholder.com/400x400/667eea/white?text=GameHub"
+          },
+          "sameAs": []
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://yourusername.github.io/SpotDiff-Website/#webpage",
+          "url": "https://yourusername.github.io/SpotDiff-Website/",
+          "name": "Mobile Game Showcase - Spot The Difference & Tower Defense Games",
+          "description": "Discover amazing mobile games including spot the difference puzzles and tower defense strategy games. Play free games and explore our growing collection of mobile entertainment.",
+          "isPartOf": {
+            "@id": "https://yourusername.github.io/SpotDiff-Website/#website"
+          },
+          "about": [
+            {
+              "@type": "Thing",
+              "name": "Mobile Games"
+            },
+            {
+              "@type": "Thing",
+              "name": "Spot The Difference Games"
+            },
+            {
+              "@type": "Thing",
+              "name": "Tower Defense Games"
+            }
+          ],
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "@id": "https://yourusername.github.io/SpotDiff-Website/#primaryimage",
+            "url": "https://via.placeholder.com/1200x630/667eea/white?text=Mobile+Game+Showcase"
+          },
+          "datePublished": "2024-12-19",
+          "dateModified": "2024-12-19"
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="nav-header">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">🎮 GameHub</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Games ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="genre-spot-difference.html">Spot The Difference</a></li>
+                        <li><a href="genre-tower-defense.html">Tower Defense</a></li>
+                        <!-- More genres can be added here easily -->
+                    </ul>
+                </li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to My Mobile Game Collection</h1>
+                <p>Discover and play amazing mobile games across different genres</p>
+                <div class="hero-genres">
+                    <a href="genre-spot-difference.html" class="genre-card spot-diff" data-genre="spot-difference">
+                        <h3>Spot The Difference</h3>
+                        <p>Challenge your observation skills</p>
+                        <span class="game-count">0 Games</span>
+                    </a>
+                    <a href="genre-tower-defense.html" class="genre-card tower-defense" data-genre="tower-defense">
+                        <h3>Tower Defense</h3>
+                        <p>Strategic defense games</p>
+                        <span class="game-count">0 Games</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Games Section -->
+        <section class="featured-games">
+            <h2>Featured Games</h2>
+            <div class="games-grid" id="featured-games-grid">
+                <!-- Featured games will be loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>GameHub</h4>
+                <p>Your ultimate destination for mobile games</p>
+            </div>
+            <div class="footer-section">
+                <h4>Genres</h4>
+                <ul>
+                    <li><a href="genre-spot-difference.html">Spot The Difference</a></li>
+                    <li><a href="genre-tower-defense.html">Tower Defense</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Me</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link">📱 App Store</a>
+                    <a href="#" class="social-link">▶️ Google Play</a>
+                    <a href="#" class="social-link">🐦 Twitter</a>
+                    <a href="#" class="social-link">📧 Email</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Mobile Game Showcase. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
