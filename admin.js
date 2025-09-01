@@ -76,30 +76,6 @@ function getDefaultGames() {
             status: 'published'
         },
         {
-            id: 'nature-secrets',
-            title: 'Nature\'s Secrets',
-            genre: 'spot-difference',
-            description: 'Discover hidden differences in breathtaking natural landscapes and wildlife scenes.',
-            rating: 4.9,
-            downloads: '25K+',
-            image: 'https://via.placeholder.com/300x200/764ba2/white?text=Nature+Secrets',
-            price: 'paid',
-            priceAmount: '$2.99',
-            status: 'published'
-        },
-        {
-            id: 'fantasy-worlds',
-            title: 'Fantasy Worlds',
-            genre: 'spot-difference',
-            description: 'Journey through magical fantasy realms and spot the differences in enchanted scenes.',
-            rating: 4.7,
-            downloads: '75K+',
-            image: 'https://via.placeholder.com/300x200/667eea/white?text=Fantasy+Worlds',
-            price: 'free',
-            priceAmount: '',
-            status: 'published'
-        },
-        {
             id: 'castle-siege',
             title: 'Castle Siege',
             genre: 'tower-defense',
@@ -109,18 +85,6 @@ function getDefaultGames() {
             image: 'https://via.placeholder.com/300x200/ff6b6b/white?text=Castle+Siege',
             price: 'free',
             priceAmount: '',
-            status: 'published'
-        },
-        {
-            id: 'space-defense',
-            title: 'Space Defense',
-            genre: 'tower-defense',
-            description: 'Protect your space station from alien invaders in this futuristic tower defense epic.',
-            rating: 4.8,
-            downloads: '45K+',
-            image: 'https://via.placeholder.com/300x200/4ecdc4/white?text=Space+Defense',
-            price: 'paid',
-            priceAmount: '$3.99',
             status: 'published'
         }
     ];
